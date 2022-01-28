@@ -111,8 +111,6 @@ buildSasImages() {
 }
 
 buildTrebleApp
-buildVariant treble_arm_bvN
-buildVariant treble_a64_bvN
 buildVariant treble_arm64_bvN
 buildSasImages
 ls ~/builds | grep $BUILD
