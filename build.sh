@@ -74,7 +74,12 @@ buildTrebleApp() {
 buildVariant() {
     lunch ${1}-userdebug
     make installclean
-    make -j$(nproc --all) systemimage
+    njob="$(nproc)"
+    until make -j$njob systemimage
+    do
+        (( njob -= 2 ))
+        (( njob > 0 ))
+    done
     make vndk-test-sepolicy
     mv $OUT/system.img ~/builds/system-"$1".img
 }
