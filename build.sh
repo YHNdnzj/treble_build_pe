@@ -79,6 +79,7 @@ buildVariant() {
     do
         (( njob -= 2 ))
         (( njob > 0 ))
+        make installclean
     done
     make vndk-test-sepolicy
     mv $OUT/system.img ~/builds/system-"$1".img
